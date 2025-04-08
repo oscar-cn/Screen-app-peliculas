@@ -1,9 +1,12 @@
+import com.aluracursos.screen.calculations.Calculator;
 import com.aluracursos.screen.models.Movies;
+import com.aluracursos.screen.models.Serie;
 
 public class Principal {
 
     public static void main(String[] args) {
         Movies myMovie = new Movies(); // creamos una nueva instancia- la memoria guarda un espacio para este objeto: myMovie
+        Calculator calculator = new Calculator();
 
         myMovie.setName("Harry Potter y la piedra filosofal");
         myMovie.setDurationInMinutes(152);
@@ -17,18 +20,23 @@ public class Principal {
         System.out.println(myMovie.calculateAverage());
 
 
+        calculator.includes(myMovie);
+        System.out.println(calculator.getTotalTime());
 
+        System.out.println("******************");
 
+        Serie selectedSeries = new Serie();
+        selectedSeries.setName("The bigbang theory");
+        selectedSeries.setIncludedInPlan(true);
+        selectedSeries.setReleaseDate(2007);
+        selectedSeries.setSeasons(12);
+        selectedSeries.setEpisodesPerSeasons(12);
+        selectedSeries.setMinutesPerSeasons(22);
 
+        selectedSeries.showTechnicalSheet();
+        calculator.includes(selectedSeries);
+        System.out.println(calculator.getTotalTime());
 
-//        com.aluracursos.screen.models.Movies otherMovie = new com.aluracursos.screen.models.Movies();
-
-//        otherMovie.name = "Matrix";
-//        otherMovie.durationInMinutes = 125;
-//        otherMovie.releaseDate = 1999;
-//        otherMovie.isIncludedInPlan = true;
-
-//        otherMovie.showTechnicalSheet();
 
     }
 }
