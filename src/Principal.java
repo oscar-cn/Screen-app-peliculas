@@ -1,4 +1,6 @@
 import com.aluracursos.screen.calculations.Calculator;
+import com.aluracursos.screen.calculations.RecommendationFilter;
+import com.aluracursos.screen.models.Episode;
 import com.aluracursos.screen.models.Movies;
 import com.aluracursos.screen.models.Serie;
 
@@ -23,6 +25,9 @@ public class Principal {
         calculator.includes(myMovie);
         System.out.println(calculator.getTotalTime());
 
+        RecommendationFilter recommendationFilter = new RecommendationFilter();
+        recommendationFilter.filter(myMovie);
+
         System.out.println("******************");
 
         Serie selectedSeries = new Serie();
@@ -32,6 +37,14 @@ public class Principal {
         selectedSeries.setSeasons(12);
         selectedSeries.setEpisodesPerSeasons(12);
         selectedSeries.setMinutesPerSeasons(22);
+
+        Episode episode = new Episode();
+
+        episode.setSerie(selectedSeries);
+        episode.setNumber(12);
+        episode.setName("la teoria del taco");
+
+        recommendationFilter.filter(episode);
 
         selectedSeries.showTechnicalSheet();
         calculator.includes(selectedSeries);
